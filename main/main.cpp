@@ -1,3 +1,4 @@
+#include "include/segregationState.hpp"
 #include "nlohmann/json.hpp"
 #include <cadmium/modeling/celldevs/grid/coupled.hpp>
 #include <cadmium/simulation/logger/csv.hpp>
@@ -5,16 +6,16 @@
 #include <chrono>
 #include <fstream>
 #include <string>
-#include "include/conwayCell.hpp"
+#include "include/segregationCell.hpp"
 
 using namespace cadmium::celldevs;
 using namespace cadmium;
 
-std::shared_ptr<GridCell<conwayState, double>> addGridCell(const coordinates & cellId, const std::shared_ptr<const GridCellConfig<conwayState, double>>& cellConfig) {
+std::shared_ptr<GridCell<segregationState, double>> addGridCell(const coordinates & cellId, const std::shared_ptr<const GridCellConfig<segregationState, double>>& cellConfig) {
 	auto cellModel = cellConfig->cellModel;
 
-	if (cellModel == "conway") {
-		return std::make_shared<conway>(cellId, cellConfig);
+	if (cellModel == "segregation") {
+		return std::make_shared<segregation>(cellId, cellConfig);
 	} else {
 		throw std::bad_typeid();
 	}
@@ -29,11 +30,11 @@ int main(int argc, char ** argv) {
 	std::string configFilePath = argv[1];
 	double simTime = (argc > 2)? std::stod(argv[2]) : 500;
 
-	auto model = std::make_shared<GridCellDEVSCoupled<conwayState, double>>("conway", addGridCell, configFilePath);
+	auto model = std::make_shared<GridCellDEVSCoupled<segregationState, double>>("segregation", addGridCell, configFilePath);
 	model->buildModel();
 	
 	auto rootCoordinator = RootCoordinator(model);
-	rootCoordinator.setLogger<CSVLogger>("grid_log.csv", ";");
+	rootCoordinator.setLogger<CSVLogger>("segregation_log.csv", ";");
 	
 	rootCoordinator.start();
 	rootCoordinator.simulate(simTime);
