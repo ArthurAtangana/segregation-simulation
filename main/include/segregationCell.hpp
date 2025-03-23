@@ -1,6 +1,7 @@
 #ifndef SEGREGATION_CELL_HPP
 #define SEGREGATION_CELL_HPP
 
+#include <iostream>
 #include <random>
 #include <cmath>
 #include <nlohmann/json.hpp>
@@ -12,15 +13,29 @@ using namespace cadmium::celldevs;
 
 class segregation : public GridCell<segregationState, double> {
 	public:
+
+	static inline int numA = 0;
+	static inline int numB = 0;
+
 	segregation(const std::vector<int>& id, 
 			const std::shared_ptr<const GridCellConfig<segregationState, double>>& config
-		  ): GridCell<segregationState, double>(id, config) { }
-
+		  ): GridCell<segregationState, double>(id, config) {
+	}
 
 
 	[[nodiscard]] segregationState localComputation(segregationState state, const std::unordered_map<std::vector<int>, NeighborData<segregationState, double>>& neighborhood) const override {
+
 		if (state.value == 0.0) {
-			return state; // Empty cells do not move
+			if (numA > 0) {
+				state.value = 1.0;
+				numA--;
+				return state;
+			}
+			else if (numB > 0) {
+				state.value = -1.0;
+				numB--;
+				return state;
+			}
 		}
 
 		int differentNeighbors = 0;
@@ -40,11 +55,13 @@ class segregation : public GridCell<segregationState, double> {
 
 		// Move if more than 50% of non-empty neighbors are different
 		if (totalNeighbors > 0 && (double)differentNeighbors / totalNeighbors > 0.5) {
-			std::vector<int> newLocation = findRandomEmptySpot(neighborhood);
-
-			if (!newLocation.empty()) {
-				state.value = 0.0; // The current position becomes empty
+			if (state.value == 1.0){
+				numA++;
 			}
+			else if (state.value == -1.0) {
+				numB++;
+			}
+			state.value = 0.0; // The current position becomes empty
 		}
 
 		return state;
@@ -53,25 +70,6 @@ class segregation : public GridCell<segregationState, double> {
 
 	[[nodiscard]] double outputDelay(const segregationState& state) const override {
 		return 1.0;
-	}
-	private:
-	std::vector<int> findRandomEmptySpot(const std::unordered_map<std::vector<int>, NeighborData<segregationState, double>>& neighborhood) const {
-        
-		std::vector<std::vector<int>> emptyCells;
-
-		for (const auto& [neighborId, neighborData] : neighborhood) {
-			if (neighborData.state->value == 0.0) { // Find empty spots
-				emptyCells.push_back(neighborId);
-			}
-		}
-
-		if (emptyCells.empty()) return {}; // No empty spots available
-
-		// Select a random empty cell
-		std::random_device rd;
-		std::mt19937 gen(rd());
-		std::uniform_int_distribution<> dis(0, emptyCells.size() - 1);	
-		return emptyCells[dis(gen)];
 	}
 };
 

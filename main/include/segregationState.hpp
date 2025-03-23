@@ -3,13 +3,17 @@
 
 #include <iostream>
 #include <nlohmann/json.hpp>
+#include <optional>
+#include <vector>
 
 // segregation state.
 struct segregationState {
 	double value;
+	bool justChanged;
+
 
 	//! Default constructor function.
-	segregationState() : value(0.0) {}
+	segregationState() : value(0.0), justChanged(false) {}
 };
 
 //! It prints the state of the cell in an output stream.
@@ -26,6 +30,7 @@ bool operator!=(const segregationState& x, const segregationState& y) {
 //! It parses a JSON file and generates the corresponding segregationState object.
 void from_json(const nlohmann::json& j, segregationState& s) {
 	j.at("value").get_to(s.value);
+	j.at("justChanged").get_to(s.justChanged);
 }
 
 #endif //SEGREGATION_STATE_HPP
