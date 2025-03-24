@@ -28,73 +28,86 @@ Using Moore Neighborhood of size 3X3, a cell will look at its neighbours and mov
 ### Part 2 - Specification and Implementation
 #### Cell-DEVS Formal Specification
 
-$$ X = \emptyset $$
-$$ Y = \emptyset $$
-$$ S = {0, 1, -1} $$
-delay = inertial
-N = Moore's 3X3
-d = 1
-$ \tau = $
+- $$ X = \emptyset $$
+- $$ Y = \emptyset $$
+- $$ S = {0, 1, -1} $$
+- delay = inertial
+- N = Moore's 3X3
+- d = 1
+- $ \tau = $
 ```c++
-		// Count the number of different-type neighbors
-		for (const auto& [neighborId, neighborData] : neighborhood) {
-			double neighborValue = neighborData.state->value;
+// Count the number of different-type neighbors
+for (const auto& [neighborId, neighborData] : neighborhood) {
+	double neighborValue = neighborData.state->value;
 
-			if (neighborValue != 0.0) { // Ignore empty cells
-				totalNeighbors++;
-				if ((state.value > 0 && neighborValue < 0) || (state.value < 0 && neighborValue > 0)) {
-					differentNeighbors++;
-				}
-			}
+	if (neighborValue != 0.0) { // Ignore empty cells
+		totalNeighbors++;
+		if ((state.value > 0 && neighborValue < 0) || (state.value < 0 && neighborValue > 0)) {
+			differentNeighbors++;
 		}
+	}
+}
 
-		// Move if more than 50% of non-empty neighbors are different
-		if (totalNeighbors > 0 && (double)differentNeighbors / totalNeighbors > 0.5) {
-			if (state.value == 1.0){
-				numA++;
-			}
-			else if (state.value == -1.0) {
-				numB++;
-			}
-			state.value = 0.0; // The current position becomes empty
-		}
+// Move if more than 50% of non-empty neighbors are different
+if (totalNeighbors > 0 && (double)differentNeighbors / totalNeighbors > 0.5) {
+	if (state.value == 1.0){
+		numA++;
+	}
+	else if (state.value == -1.0) {
+		numB++;
+	}
+	state.value = 0.0; // The current position becomes empty
+}
 
-		return state;
+return state;
 ```
-D = 1
-$ \delta_{int} =  Cell DEVS specification$:
-$ \delta_{ext} =  Cell DEVS specification$:
-$ \lambda =  Cell DEVS specification$:
+- D = 1
+- $ \delta_{int} =  Cell DEVS specification$:
+- $ \delta_{ext} =  Cell DEVS specification$:
+- $ \lambda =  Cell DEVS specification$:
 
 #### Test Frames and experiments
 The segregation maps generated using the formal specification above showcase the behavior of the model under different starting conditions.
 
 ##### Experiment 1
 In this experiment, Group A is the only one meant to move as the group B cells are already segregated. Group A are show exploring the map until they find the right spot.
+
 ![Experiment 1 Initial State](documentation/img/experiment_1_initial_state.png)
+
 ![Experiment 1 Final State](documentation/img/experiment_1_final_state.png)
+
 ##### Experiment 2
 In this experiment, Group B is the only one meant to move as the group A cells are already segregated. Group B are show exploring the map until they find the right spot.
+
 ![Experiment 2 Initial State](documentation/img/experiment_2_initial_state.png)
+
 ![Experiment 2 Final State](documentation/img/experiment_2_final_state.png)
+
 ##### Experiment 3
 In this experiment, Group B and Group A both need to move. They are show exploring the map until they find the right spot that fulfills the requirements.
 ![Experiment 3 Initial State](documentation/img/experiment_3_initial_state.png)
+
 ![Experiment 3 Final State](documentation/img/experiment_3_final_state.png)
+
 ##### Experiment 4
 In this experiement, Only 1 valid spot exists for the group A cell that is needed to move. The cell should find the right spot that fulfills the requirement and stay there. Due to the simulation always processing the first iteration at t=0, the video is not able to show this process but the following images do.
 
 ![Experiment 4 Initial State](documentation/img/experiment_4_initial_state.png)
+
 ![Experiment 4 Final State](documentation/img/experiment_4_final_state.png)
+
 ##### Experiment 5
 In this experiment, There is no valid spot that exists for the group A cell. The cell should be attempting to go to the same location infinitely. The final state reference images shows the last frame but in reality, the cell is attempting to go to a location.
 
 ![Experiment 5 Initial State](documentation/img/experiment_5_initial_state.png)
+
 ![Experiment 5 Final State](documentation/img/experiment_5_final_state.png)
+
 ##### Experiment 6
 In this experiment, cells move in a pseudo random manner until they find a neighborhood that is properly segregated (50% majority). The group B (grey) is arranged in stripes while the red cells are trying to find a spot to congregagte. in the initial state, all groupA (red) cells must move and some groupB (grey) cells must move.
 
 ![Experiment 6 Initial State](documentation/img/experiment_6_initial_state.png)
+
 ![Experiment 6 Final State](documentation/img/experiment_6_final_state.png)
 
 #### Conclusion
