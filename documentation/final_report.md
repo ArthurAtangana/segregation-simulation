@@ -71,32 +71,31 @@ The segregation maps generated using the formal specification above showcase the
 
 ##### Experiment 1
 In this experiment, Group A is the only one meant to move as the group B cells are already segregated. Group A are show exploring the map until they find the right spot.
-![Experiment 1 Initial State](experiment_1_initial_state.png)
-![Experiment 1 Final State](experiment_1_final_state.png)
+![Experiment 1 Initial State](documentation/img/experiment_1_initial_state.png)
+![Experiment 1 Final State](documentation/img/experiment_1_final_state.png)
 ##### Experiment 2
 In this experiment, Group B is the only one meant to move as the group A cells are already segregated. Group B are show exploring the map until they find the right spot.
-![Experiment 2 Initial State](experiment_2_initial_state.png)
-![Experiment 2 Final State](experiment_2_final_state.png)
+![Experiment 2 Initial State](documentation/img/experiment_2_initial_state.png)
+![Experiment 2 Final State](documentation/img/experiment_2_final_state.png)
 ##### Experiment 3
-In this experiment, Group B and Group B both need to move. They are show exploring the map until they find the right spot that fulfills the requirements.
-![Experiment 3 Initial State](experiment_3_initial_state.png)
-![Experiment 3 Final State](experiment_3_final_state.png)
+In this experiment, Group B and Group A both need to move. They are show exploring the map until they find the right spot that fulfills the requirements.
+![Experiment 3 Initial State](documentation/img/experiment_3_initial_state.png)
+![Experiment 3 Final State](documentation/img/experiment_3_final_state.png)
 ##### Experiment 4
 In this experiement, Only 1 valid spot exists for the group A cell that is needed to move. The cell should find the right spot that fulfills the requirement and stay there. Due to the simulation always processing the first iteration at t=0, the video is not able to show this process but the following images do.
 
-![Experiment 4 Initial State](experiment_4_initial_state.png)
-![Experiment 4 Final State](experiment_4_final_state.png)
+![Experiment 4 Initial State](documentation/img/experiment_4_initial_state.png)
+![Experiment 4 Final State](documentation/img/experiment_4_final_state.png)
 ##### Experiment 5
-In this experiment, There is no valid spot that exists for the group A cell. the two empty spots that the cell is attempting to populate should show an infinite back and forth.
+In this experiment, There is no valid spot that exists for the group A cell. The cell should be attempting to go to the same location infinitely.
 
-![Experiment 5 Initial State](experiment_5_initial_state.png)
-![Experiment 5 Final State](experiment_5_final_state.png)
+![Experiment 5 Initial State](documentation/img/experiment_5_initial_state.png)
 
 ##### Experiment 6
-In this experiment, cells move in a pseudo random manner until they find a neighborhood that is properly segregated (50% majority).
+In this experiment, cells move in a pseudo random manner until they find a neighborhood that is properly segregated (50% majority). The group B (grey) is arranged in stripes while the red cells are trying to find a spot to congregagte.
 
-![Experiment 6 Initial State](experiment_6_initial_state.png)
-![Experiment 6 Final State](experiment_6_final_state.png)
+![Experiment 6 Initial State](documentation/img/experiment_6_initial_state.png)
+![Experiment 6 Final State](documentation/img/experiment_6_final_state.png)
 
 #### Conclusion
 The segregation model showcases the natural segregation pattern that arises when cells attempt to be surrounded wit h at least 50% of similar cells. While this does not necessarily create uniform blocks and sometime simple neighborhoods where 1 of each coexists together, in most cases the cells aggregate into a large cluster of similar neighbours.
