@@ -87,12 +87,12 @@ In this experiement, Only 1 valid spot exists for the group A cell that is neede
 ![Experiment 4 Initial State](documentation/img/experiment_4_initial_state.png)
 ![Experiment 4 Final State](documentation/img/experiment_4_final_state.png)
 ##### Experiment 5
-In this experiment, There is no valid spot that exists for the group A cell. The cell should be attempting to go to the same location infinitely.
+In this experiment, There is no valid spot that exists for the group A cell. The cell should be attempting to go to the same location infinitely. The final state reference images shows the last frame but in reality, the cell is attempting to go to a location.
 
 ![Experiment 5 Initial State](documentation/img/experiment_5_initial_state.png)
-
+![Experiment 5 Final State](documentation/img/experiment_5_final_state.png)
 ##### Experiment 6
-In this experiment, cells move in a pseudo random manner until they find a neighborhood that is properly segregated (50% majority). The group B (grey) is arranged in stripes while the red cells are trying to find a spot to congregagte.
+In this experiment, cells move in a pseudo random manner until they find a neighborhood that is properly segregated (50% majority). The group B (grey) is arranged in stripes while the red cells are trying to find a spot to congregagte. in the initial state, all groupA (red) cells must move and some groupB (grey) cells must move.
 
 ![Experiment 6 Initial State](documentation/img/experiment_6_initial_state.png)
 ![Experiment 6 Final State](documentation/img/experiment_6_final_state.png)
