@@ -113,5 +113,8 @@ In this experiment, cells move in a pseudo random manner until they find a neigh
 #### Conclusion
 The segregation model showcases the natural segregation pattern that arises when cells attempt to be surrounded wit h at least 50% of similar cells. While this does not necessarily create uniform blocks and sometime simple neighborhoods where 1 of each coexists together, in most cases the cells aggregate into a large cluster of similar neighbours.
 ##### Potential improvements and remaining work
-Since the model iterates and assign cells one at a time to the first empty cell, this means that the predetermination of the final state is set by the initial state. To further this model's complexity, a random distribution of cells upon a move would results in vastly different patterns. Another interesting option would be that when a cells decides to move, it randomly looks at empty cells, but only choses to move to that empty cell if it's neighborhood also satisfies the segregation principle of 50% or more similar neighbours.
+Since the model iterates and assign cells one at a time to the first empty cell, this means that the predetermination of the final state is set by the initial state. 
+- To further this model's complexity, a random distribution of cells upon a move would results in vastly different patterns.
+- Another interesting option would be that when a cells decides to move, it randomly looks at empty cells, but only choses to move to that empty cell if it's neighborhood also satisfies the segregation principle of 50% or more similar neighbours.
+- Having other states within the cell would also add complexity in the model. Segregation could be conditional on multiple state of the neighbours, for example, moving if the neighbours are different on one state variable but similar in another. This could build pattern of behavior for different groups
 
