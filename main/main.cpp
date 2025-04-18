@@ -2,7 +2,9 @@
 #include "nlohmann/json.hpp"
 #include <cadmium/modeling/celldevs/grid/coupled.hpp>
 #include <cadmium/simulation/logger/csv.hpp>
+#include <cadmium/simulation/logger/stdout.hpp>
 #include <cadmium/simulation/root_coordinator.hpp>
+#include <limits>
 #include <chrono>
 #include <fstream>
 #include <string>
@@ -28,6 +30,7 @@ int main(int argc, char ** argv) {
 	std::string configFilePath = "config/segregation_config.json";
 	std::string outputFilePath = "output/segregation_log.csv";
 	double simTime = 100;
+	bool cmd_out = false;
 
 	for (int i = 1; i < argc; ++i){
 		std::string arg = argv[i];
@@ -54,7 +57,12 @@ int main(int argc, char ** argv) {
 		// output file
 		else if (arg == "--output" || arg == "-o"){
 			if (i + 1 < argc){
-				outputFilePath = argv[++i];
+				if (std::string(argv[i+1]) == "cmd"){
+					cmd_out = true;
+					i++;
+				} else {
+					outputFilePath = argv[++i];
+				}
 			}
 			else {
 				std::cout << "missing outputFilePath paramenter" << std::endl;
@@ -66,19 +74,17 @@ int main(int argc, char ** argv) {
 			return 1;
 		}
 	}
+	std::cout << cmd_out << std::endl;
 	
-	// if (argc < 2) {
-	// 	std::cout << "Program used with wrong parameters. The program must be invoked as follows:";
-	// 	std::cout << argv[0] << " SCENARIO_CONFIG.json [MAX_SIMULATION_TIME (default: 500)]" << std::endl;
-	// 	return -1;
-	// }
-
 	auto model = std::make_shared<GridCellDEVSCoupled<segregationState, double>>("segregation", addGridCell, configFilePath);
 	model->buildModel();
 	
 	auto rootCoordinator = RootCoordinator(model);
-	rootCoordinator.setLogger<CSVLogger>(outputFilePath,";");
-	
+	if (cmd_out){
+		rootCoordinator.setLogger<STDOUTLogger>(";");
+	} else {
+		rootCoordinator.setLogger<CSVLogger>(outputFilePath,";");
+	}	
 	rootCoordinator.start();
 	rootCoordinator.simulate(simTime);
 	rootCoordinator.stop();
