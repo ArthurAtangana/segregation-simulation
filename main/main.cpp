@@ -45,7 +45,7 @@ int main(int argc, char ** argv) {
 			}
 		}
 		// sim time
-		else if (arg == "--simulation-time" || arg == "-s"){
+		else if (arg == "--time" || arg == "-t"){
 			if (i + 1 < argc){
 				simTime = std::stod(argv[++i]);
 			}
@@ -74,8 +74,6 @@ int main(int argc, char ** argv) {
 			return 1;
 		}
 	}
-	std::cout << cmd_out << std::endl;
-	
 	auto model = std::make_shared<GridCellDEVSCoupled<segregationState, double>>("segregation", addGridCell, configFilePath);
 	model->buildModel();
 	
