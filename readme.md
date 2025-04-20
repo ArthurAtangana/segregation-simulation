@@ -20,8 +20,24 @@
 ### Project Structure:
 
 ```bash
-├── build_sim.sh
-├── CMakeLists.txt
+├── asymmetric-cell-devs
+│   ├── build_sim.sh
+│   ├── CMakeLists.txt
+│   └── main
+│       ├── CMakeLists.txt
+│       ├── include
+│       │   ├── segregationCell.hpp
+│       │   └── segregationState.hpp
+│       └── main.cpp
+├── cell-devs
+│   ├── build_sim.sh
+│   ├── CMakeLists.txt
+│   └── main
+│       ├── CMakeLists.txt
+│       ├── include
+│       │   ├── segregationCell.hpp
+│       │   └── segregationState.hpp
+│       └── main.cpp
 ├── config
 │   ├── default_config.json
 │   ├── experiment_1_config.json
@@ -46,6 +62,7 @@
 │   │   ├── experiment_5_initial_state.png
 │   │   ├── experiment_6_final_state.png
 │   │   └── experiment_6_initial_state.png
+│   ├── presentation.odp
 │   └── videos
 │       ├── experiment_1.webm
 │       ├── experiment_2.webm
@@ -60,12 +77,7 @@
 │   ├── experiment_4_log.csv
 │   ├── experiment_5_log.csv
 │   └── experiment_6_log.csv
-├── main
-│   ├── CMakeLists.txt
-│   ├── include
-│   │   ├── segregationCell.hpp
-│   │   └── segregationState.hpp
-│   └── main.cpp
+├── presentation.md
 ├── readme.md
 └── run_experiments.sh
 ```
