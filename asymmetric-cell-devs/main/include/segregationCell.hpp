@@ -5,25 +5,28 @@
 #include <random>
 #include <cmath>
 #include <nlohmann/json.hpp>
-#include <cadmium/modeling/celldevs/grid/cell.hpp>
-#include <cadmium/modeling/celldevs/grid/config.hpp>
+#include <cadmium/modeling/celldevs/asymm/cell.hpp>
+#include <cadmium/modeling/celldevs/asymm/config.hpp>
 #include <vector>
 #include "segregationState.hpp"
 
-using namespace cadmium::celldevs; class segregation : public GridCell<segregationState, double> {
+using namespace cadmium;
+using namespace cadmium::celldevs; 
+
+class segregation : public AsymmCell<segregationState, double> {
 	public:
 
 	static inline int numA = 0;
 	static inline int numB = 0;
-	static inline std::vector<int> emptyCells;
 
-	segregation(const std::vector<int>& id, 
-			const std::shared_ptr<const GridCellConfig<segregationState, double>>& config
-		  ): GridCell<segregationState, double>(id, config) {
+	segregation(const std::string& id, 
+			const std::shared_ptr<const AsymmCellConfig<segregationState, double>>& config
+		  ): AsymmCell<segregationState, double>(id, config) {
 	}
 
+	[[nodiscard]] segregationState localComputation(segregationState state, const std::unordered_map<std::string, NeighborData<segregationState, double>>& neighborhood) const override {
 
-	[[nodiscard]] segregationState localComputation(segregationState state, const std::unordered_map<std::vector<int>, NeighborData<segregationState, double>>& neighborhood) const override {
+		std::cout << state.isFamily << std::endl;
 
 		if (state.value == 0.0) {
 			if (numA > 0) {
@@ -57,7 +60,7 @@ using namespace cadmium::celldevs; class segregation : public GridCell<segregati
 		return 1.0;
 	}
 
-	bool validCell(const segregationState& state, const std::unordered_map<std::vector<int>, NeighborData<segregationState, double>>& neighborhood) const {
+	bool validCell(const segregationState& state, const std::unordered_map<std::string, NeighborData<segregationState, double>>& neighborhood) const {
 		int differentNeighbors = 0;
 		int totalNeighbors = 0;
 

@@ -1,6 +1,5 @@
-#include "include/segregationState.hpp"
 #include "nlohmann/json.hpp"
-#include <cadmium/modeling/celldevs/grid/coupled.hpp>
+#include <cadmium/modeling/celldevs/asymm/coupled.hpp>
 #include <cadmium/simulation/logger/csv.hpp>
 #include <cadmium/simulation/logger/stdout.hpp>
 #include <cadmium/simulation/root_coordinator.hpp>
@@ -11,14 +10,15 @@
 #include <iostream>
 
 #include "include/segregationCell.hpp"
+#include "include/segregationState.hpp"
 
-using namespace cadmium::celldevs;
 using namespace cadmium;
+using namespace cadmium::celldevs;
 
-std::shared_ptr<GridCell<segregationState, double>> addGridCell(const coordinates & cellId, const std::shared_ptr<const GridCellConfig<segregationState, double>>& cellConfig) {
+std::shared_ptr<AsymmCell<segregationState, double>> addAsymmCell(const std::string& cellId, const std::shared_ptr<const AsymmCellConfig<segregationState, double>>& cellConfig) {
 	auto cellModel = cellConfig->cellModel;
 
-	if (cellModel == "segregation") {
+	if (cellModel == "default" || cellModel == "segregation") {
 		return std::make_shared<segregation>(cellId, cellConfig);
 	} else {
 		throw std::bad_typeid();
@@ -74,7 +74,7 @@ int main(int argc, char ** argv) {
 			return 1;
 		}
 	}
-	auto model = std::make_shared<GridCellDEVSCoupled<segregationState, double>>("segregation", addGridCell, configFilePath);
+	auto model = std::make_shared<AsymmCellDEVSCoupled<segregationState, double>>("segregation", addAsymmCell, configFilePath);
 	model->buildModel();
 	
 	auto rootCoordinator = RootCoordinator(model);
