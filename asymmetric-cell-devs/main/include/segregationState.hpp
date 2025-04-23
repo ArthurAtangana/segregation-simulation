@@ -9,12 +9,12 @@
 // segregation state.
 struct segregationState {
 	double value;
-	bool justChanged;
-	bool isFamily;
+	bool isValuableLocation;
+	int timePassed;
 
 
 	//! Default constructor function.
-	segregationState() : value(0.0), justChanged(false), isFamily(false) {}
+	segregationState() : value(0.0), isValuableLocation(false), timePassed(0) {}
 };
 
 //! It prints the state of the cell in an output stream.
@@ -26,14 +26,15 @@ std::ostream& operator<<(std::ostream& os, const segregationState& x) {
 //! The simulator must be able to compare the equality of two state objects
 bool operator!=(const segregationState& x, const segregationState& y) {
 	return x.value != y.value ||
-	       x.isFamily != y.isFamily;
+	       x.isValuableLocation != y.isValuableLocation ||
+	       x.timePassed != y.timePassed;
 }
 
 //! It parses a JSON file and generates the corresponding segregationState object.
 void from_json(const nlohmann::json& j, segregationState& s) {
 	j.at("value").get_to(s.value);
-	j.at("justChanged").get_to(s.justChanged);
-	j.at("isFamily").get_to(s.isFamily);
+	j.at("isValuableLocation").get_to(s.isValuableLocation);
+	j.at("timePassed").get_to(s.timePassed);
 }
 
 #endif //SEGREGATION_STATE_HPP

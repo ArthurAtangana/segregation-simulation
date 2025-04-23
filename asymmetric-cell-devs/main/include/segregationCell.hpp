@@ -7,6 +7,7 @@
 #include <nlohmann/json.hpp>
 #include <cadmium/modeling/celldevs/asymm/cell.hpp>
 #include <cadmium/modeling/celldevs/asymm/config.hpp>
+#include <unordered_map>
 #include <vector>
 #include "segregationState.hpp"
 
@@ -14,73 +15,101 @@ using namespace cadmium;
 using namespace cadmium::celldevs; 
 
 class segregation : public AsymmCell<segregationState, double> {
+	std::string cellID;
+	double ratio;
 	public:
-
-	static inline int numA = 0;
-	static inline int numB = 0;
-
+	static inline std::unordered_map<std::string, double> cellsAssignment;
 	segregation(const std::string& id, 
 			const std::shared_ptr<const AsymmCellConfig<segregationState, double>>& config
 		  ): AsymmCell<segregationState, double>(id, config) {
+		cellID = id;
+		config ->rawCellConfig.at("ratio").get_to(ratio);
 	}
 
 	[[nodiscard]] segregationState localComputation(segregationState state, const std::unordered_map<std::string, NeighborData<segregationState, double>>& neighborhood) const override {
 
-		std::cout << state.isFamily << std::endl;
 
+		// trying out a cell for at least 5 time units before looking to move
+		state.timePassed++;
+		if (state.timePassed < 5) {
+			return state;
+		}
+
+		// assign value if there is one to be assigned, and add cellID:0 pair if not already in the map
 		if (state.value == 0.0) {
-			if (numA > 0) {
-				state.value = 1.0;
-				numA--;
-				return state;
+			state.value = cellsAssignment[cellID]; // assign value
+			cellsAssignment[cellID] = 0.0; //reset cell assignment tracker
+			if (state.value != 0){
+				state.timePassed = 0; // restart the counter for the cell
 			}
-			else if (numB > 0) {
-				state.value = -1.0;
-				numB--;
-				return state;
-			}
+			return state;
 		}
 
-		// Move if more than 50% of non-empty neighbors are different
-		if (validCell(state, neighborhood)) {
-			if (state.value == 1.0){
-				numA++;
-			}
-			else if (state.value == -1.0) {
-				numB++;
-			}
-			state.value = 0.0; // The current position becomes empty
+		// check if cell needs to move
+		if (cellNeedsToMove(state, neighborhood)){
+			moveCell(state);
+			// reset state of the cell
+			state.value = 0.0;
+			return state;
+		} else {
+			return state;
 		}
-
-		return state;
-
 	}
 
 	[[nodiscard]] double outputDelay(const segregationState& state) const override {
 		return 1.0;
 	}
 
-	bool validCell(const segregationState& state, const std::unordered_map<std::string, NeighborData<segregationState, double>>& neighborhood) const {
-		int differentNeighbors = 0;
+	[[nodiscard]] bool cellNeedsToMove(const segregationState& state, const std::unordered_map<std::string, NeighborData<segregationState, double>>& neighborhood) const {
+
+		int similarNeighbors = 0;
 		int totalNeighbors = 0;
+
+		if (state.isValuableLocation) {
+			totalNeighbors++; //  cell counts again (valuable location adds +1 to the total count (negates 1 different neighbor)
+		}
 
 		// Count the number of different-type neighbors
 		for (const auto& [neighborId, neighborData] : neighborhood) {
 			double neighborValue = neighborData.state->value;
-
 			if (neighborValue != 0.0) { // Ignore empty cells
 				totalNeighbors++;
-				if ((state.value > 0 && neighborValue < 0) || (state.value < 0 && neighborValue > 0)) {
-					differentNeighbors++;
+				if (state.value != neighborValue){
+					similarNeighbors++;
 				}
 			}
 		}
-		// Move if more than 50% of non-empty neighbors are different
-		if (totalNeighbors > 0 && (double)differentNeighbors / totalNeighbors > 0.5) {
-			return true;
+		if (totalNeighbors == 0) {
+			return true; // empty neighborhood. cell wants friends.
+		} else if ((double)similarNeighbors/totalNeighbors >= ratio) {
+			return false; // enough are similar to the cell, no need to move
 		} else {
-			return false;
+			return true; // cell needs to move
 		}
+	}
+	void moveCell(const segregationState& state) const {
+		// add cell current value to a random empty cell in the cellAssignments map
+		std::vector<std::string> zeroKeys;
+
+		// Collect keys with value == 0
+		for (const auto& [key, val] : cellsAssignment) {
+			if (val == 0) {
+			zeroKeys.push_back(key);
+			}
+		}
+
+		if (zeroKeys.empty()) {
+			return;  // No suitable key found
+		}
+
+		// Choose a random key from those
+		std::random_device rd;
+		std::mt19937 gen(rd());
+		std::uniform_int_distribution<> dist(0, zeroKeys.size() - 1);
+
+		std::string chosenKey = zeroKeys[dist(gen)];
+		cellsAssignment[chosenKey] = state.value;
+
 	}
 };
 
