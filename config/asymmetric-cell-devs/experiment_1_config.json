@@ -13,7 +13,7 @@
         "c1": {
             "state": {
                 "value": 1.0,
-                "isValuableLocation": true,
+                "isValuableLocation": false,
                 "timePassed": 0
             },
             "neighborhood": {
@@ -25,7 +25,7 @@
         "c2": {
             "state": {
                 "value": -1.0,
-                "isValuableLocation": true,
+                "isValuableLocation": false,
                 "timePassed": 0
             },
             "neighborhood": {
@@ -107,6 +107,11 @@
             }
         },
         "c11": {
+            "state": {
+                "value": -1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c1": 1.0,
                 "c2": 1.0,
@@ -116,6 +121,11 @@
             }
         },
         "c12": {
+            "state": {
+                "value": -1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c1": 1.0,
                 "c2": 1.0,

@@ -13,7 +13,7 @@
         "c1": {
             "state": {
                 "value": 1.0,
-                "isValuableLocation": true,
+                "isValuableLocation": false,
                 "timePassed": 0
             },
             "neighborhood": {
@@ -25,7 +25,7 @@
         "c2": {
             "state": {
                 "value": -1.0,
-                "isValuableLocation": true,
+                "isValuableLocation": false,
                 "timePassed": 0
             },
             "neighborhood": {
@@ -46,6 +46,11 @@
             }
         },
         "c4": {
+            "state": {
+                "value": 1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c3": 1.0,
                 "c5": 1.0,
@@ -55,19 +60,25 @@
             }
         },
         "c5": {
+            "state": {
+                "value": 1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c4": 1.0,
-                "c6": 1.0,
                 "c14": 1.0,
-                "c15": 1.0,
-                "c16": 1.0
+                "c15": 1.0
             }
         },
         "c6": {
+            "state": {
+                "value": 1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
-                "c5": 1.0,
                 "c7": 1.0,
-                "c15": 1.0,
                 "c16": 1.0,
                 "c17": 1.0
             }
@@ -82,6 +93,11 @@
             }
         },
         "c8": {
+            "state": {
+                "value": 1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c7": 1.0,
                 "c9": 1.0,
@@ -100,6 +116,11 @@
             }
         },
         "c10": {
+            "state": {
+                "value": -1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c9": 1.0,
                 "c19": 1.0,
@@ -107,6 +128,11 @@
             }
         },
         "c11": {
+            "state": {
+                "value": -1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c1": 1.0,
                 "c2": 1.0,
@@ -116,6 +142,11 @@
             }
         },
         "c12": {
+            "state": {
+                "value": -1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c1": 1.0,
                 "c2": 1.0,
@@ -140,6 +171,11 @@
             }
         },
         "c14": {
+            "state": {
+                "value": 1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c3": 1.0,
                 "c4": 1.0,
@@ -152,25 +188,24 @@
             }
         },
         "c15": {
+            "state": {
+                "value": -1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c4": 1.0,
                 "c5": 1.0,
-                "c6": 1.0,
                 "c14": 1.0,
-                "c16": 1.0,
                 "c24": 1.0,
-                "c25": 1.0,
-                "c26": 1.0
+                "c25": 1.0
             }
         },
         "c16": {
             "neighborhood": {
-                "c5": 1.0,
                 "c6": 1.0,
                 "c7": 1.0,
-                "c15": 1.0,
                 "c17": 1.0,
-                "c25": 1.0,
                 "c26": 1.0,
                 "c27": 1.0
             }
@@ -188,6 +223,11 @@
             }
         },
         "c18": {
+            "state": {
+                "value": 1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c7": 1.0,
                 "c8": 1.0,
@@ -242,6 +282,11 @@
             }
         },
         "c23": {
+            "state": {
+                "value": -1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c12": 1.0,
                 "c13": 1.0,
@@ -254,6 +299,11 @@
             }
         },
         "c24": {
+            "state": {
+                "value": 1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c13": 1.0,
                 "c14": 1.0,
@@ -266,30 +316,39 @@
             }
         },
         "c25": {
+            "state": {
+                "value": -1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c14": 1.0,
                 "c15": 1.0,
-                "c16": 1.0,
                 "c24": 1.0,
-                "c26": 1.0,
                 "c34": 1.0,
-                "c35": 1.0,
-                "c36": 1.0
+                "c35": 1.0
             }
         },
         "c26": {
+            "state": {
+                "value": -1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
-                "c15": 1.0,
                 "c16": 1.0,
                 "c17": 1.0,
-                "c25": 1.0,
                 "c27": 1.0,
-                "c35": 1.0,
                 "c36": 1.0,
                 "c37": 1.0
             }
         },
         "c27": {
+            "state": {
+                "value": 1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c16": 1.0,
                 "c17": 1.0,
@@ -314,6 +373,11 @@
             }
         },
         "c29": {
+            "state": {
+                "value": -1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c18": 1.0,
                 "c19": 1.0,
@@ -335,6 +399,11 @@
             }
         },
         "c31": {
+            "state": {
+                "value": 1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c21": 1.0,
                 "c22": 1.0,
@@ -368,6 +437,11 @@
             }
         },
         "c34": {
+            "state": {
+                "value": 1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c23": 1.0,
                 "c24": 1.0,
@@ -380,30 +454,39 @@
             }
         },
         "c35": {
+            "state": {
+                "value": 1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c24": 1.0,
                 "c25": 1.0,
-                "c26": 1.0,
                 "c34": 1.0,
-                "c36": 1.0,
                 "c44": 1.0,
-                "c45": 1.0,
-                "c46": 1.0
+                "c45": 1.0
             }
         },
         "c36": {
+            "state": {
+                "value": -1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
-                "c25": 1.0,
                 "c26": 1.0,
                 "c27": 1.0,
-                "c35": 1.0,
                 "c37": 1.0,
-                "c45": 1.0,
                 "c46": 1.0,
                 "c47": 1.0
             }
         },
         "c37": {
+            "state": {
+                "value": 1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c26": 1.0,
                 "c27": 1.0,
@@ -428,6 +511,11 @@
             }
         },
         "c39": {
+            "state": {
+                "value": -1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c28": 1.0,
                 "c29": 1.0,
@@ -470,6 +558,11 @@
             }
         },
         "c43": {
+            "state": {
+                "value": 1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c32": 1.0,
                 "c33": 1.0,
@@ -497,27 +590,31 @@
             "neighborhood": {
                 "c34": 1.0,
                 "c35": 1.0,
-                "c36": 1.0,
                 "c44": 1.0,
-                "c46": 1.0,
                 "c54": 1.0,
-                "c55": 1.0,
-                "c56": 1.0
+                "c55": 1.0
             }
         },
         "c46": {
+            "state": {
+                "value": -1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
-                "c35": 1.0,
                 "c36": 1.0,
                 "c37": 1.0,
-                "c45": 1.0,
                 "c47": 1.0,
-                "c55": 1.0,
                 "c56": 1.0,
                 "c57": 1.0
             }
         },
         "c47": {
+            "state": {
+                "value": 1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c36": 1.0,
                 "c37": 1.0,
@@ -542,6 +639,11 @@
             }
         },
         "c49": {
+            "state": {
+                "value": -1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c38": 1.0,
                 "c39": 1.0,
@@ -563,6 +665,11 @@
             }
         },
         "c51": {
+            "state": {
+                "value": 1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c41": 1.0,
                 "c42": 1.0,
@@ -572,6 +679,11 @@
             }
         },
         "c52": {
+            "state": {
+                "value": 1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c41": 1.0,
                 "c42": 1.0,
@@ -596,6 +708,11 @@
             }
         },
         "c54": {
+            "state": {
+                "value": -1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c43": 1.0,
                 "c44": 1.0,
@@ -608,25 +725,24 @@
             }
         },
         "c55": {
+            "state": {
+                "value": 1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c44": 1.0,
                 "c45": 1.0,
-                "c46": 1.0,
                 "c54": 1.0,
-                "c56": 1.0,
                 "c64": 1.0,
-                "c65": 1.0,
-                "c66": 1.0
+                "c65": 1.0
             }
         },
         "c56": {
             "neighborhood": {
-                "c45": 1.0,
                 "c46": 1.0,
                 "c47": 1.0,
-                "c55": 1.0,
                 "c57": 1.0,
-                "c65": 1.0,
                 "c66": 1.0,
                 "c67": 1.0
             }
@@ -656,6 +772,11 @@
             }
         },
         "c59": {
+            "state": {
+                "value": -1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c48": 1.0,
                 "c49": 1.0,
@@ -677,6 +798,11 @@
             }
         },
         "c61": {
+            "state": {
+                "value": -1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c51": 1.0,
                 "c52": 1.0,
@@ -686,6 +812,11 @@
             }
         },
         "c62": {
+            "state": {
+                "value": 1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c51": 1.0,
                 "c52": 1.0,
@@ -722,30 +853,39 @@
             }
         },
         "c65": {
+            "state": {
+                "value": 1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c54": 1.0,
                 "c55": 1.0,
-                "c56": 1.0,
                 "c64": 1.0,
-                "c66": 1.0,
                 "c74": 1.0,
-                "c75": 1.0,
-                "c76": 1.0
+                "c75": 1.0
             }
         },
         "c66": {
+            "state": {
+                "value": -1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
-                "c55": 1.0,
                 "c56": 1.0,
                 "c57": 1.0,
-                "c65": 1.0,
                 "c67": 1.0,
-                "c75": 1.0,
                 "c76": 1.0,
                 "c77": 1.0
             }
         },
         "c67": {
+            "state": {
+                "value": -1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c56": 1.0,
                 "c57": 1.0,
@@ -758,6 +898,11 @@
             }
         },
         "c68": {
+            "state": {
+                "value": -1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c57": 1.0,
                 "c58": 1.0,
@@ -800,6 +945,11 @@
             }
         },
         "c72": {
+            "state": {
+                "value": 1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c61": 1.0,
                 "c62": 1.0,
@@ -812,6 +962,11 @@
             }
         },
         "c73": {
+            "state": {
+                "value": 1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c62": 1.0,
                 "c63": 1.0,
@@ -824,6 +979,11 @@
             }
         },
         "c74": {
+            "state": {
+                "value": -1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c63": 1.0,
                 "c64": 1.0,
@@ -836,30 +996,39 @@
             }
         },
         "c75": {
+            "state": {
+                "value": -1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c64": 1.0,
                 "c65": 1.0,
-                "c66": 1.0,
                 "c74": 1.0,
-                "c76": 1.0,
                 "c84": 1.0,
-                "c85": 1.0,
-                "c86": 1.0
+                "c85": 1.0
             }
         },
         "c76": {
+            "state": {
+                "value": -1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
-                "c65": 1.0,
                 "c66": 1.0,
                 "c67": 1.0,
-                "c75": 1.0,
                 "c77": 1.0,
-                "c85": 1.0,
                 "c86": 1.0,
                 "c87": 1.0
             }
         },
         "c77": {
+            "state": {
+                "value": -1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c66": 1.0,
                 "c67": 1.0,
@@ -872,6 +1041,11 @@
             }
         },
         "c78": {
+            "state": {
+                "value": -1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c67": 1.0,
                 "c68": 1.0,
@@ -905,6 +1079,11 @@
             }
         },
         "c81": {
+            "state": {
+                "value": -1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c71": 1.0,
                 "c72": 1.0,
@@ -914,6 +1093,11 @@
             }
         },
         "c82": {
+            "state": {
+                "value": 1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c71": 1.0,
                 "c72": 1.0,
@@ -926,6 +1110,11 @@
             }
         },
         "c83": {
+            "state": {
+                "value": 1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c72": 1.0,
                 "c73": 1.0,
@@ -938,6 +1127,11 @@
             }
         },
         "c84": {
+            "state": {
+                "value": -1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c73": 1.0,
                 "c74": 1.0,
@@ -950,25 +1144,29 @@
             }
         },
         "c85": {
+            "state": {
+                "value": 1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c74": 1.0,
                 "c75": 1.0,
-                "c76": 1.0,
                 "c84": 1.0,
-                "c86": 1.0,
                 "c94": 1.0,
-                "c95": 1.0,
-                "c96": 1.0
+                "c95": 1.0
             }
         },
         "c86": {
+            "state": {
+                "value": -1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
-                "c75": 1.0,
                 "c76": 1.0,
                 "c77": 1.0,
-                "c85": 1.0,
                 "c87": 1.0,
-                "c95": 1.0,
                 "c96": 1.0,
                 "c97": 1.0
             }
@@ -1010,6 +1208,11 @@
             }
         },
         "c90": {
+            "state": {
+                "value": -1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c79": 1.0,
                 "c80": 1.0,
@@ -1035,6 +1238,11 @@
             }
         },
         "c93": {
+            "state": {
+                "value": 1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c82": 1.0,
                 "c83": 1.0,
@@ -1053,20 +1261,26 @@
             }
         },
         "c95": {
+            "state": {
+                "value": 1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
                 "c84": 1.0,
                 "c85": 1.0,
-                "c86": 1.0,
-                "c94": 1.0,
-                "c96": 1.0
+                "c94": 1.0
             }
         },
         "c96": {
+            "state": {
+                "value": 1.0,
+                "isValuableLocation": false,
+                "timePassed": 0
+            },
             "neighborhood": {
-                "c85": 1.0,
                 "c86": 1.0,
                 "c87": 1.0,
-                "c95": 1.0,
                 "c97": 1.0
             }
         },
