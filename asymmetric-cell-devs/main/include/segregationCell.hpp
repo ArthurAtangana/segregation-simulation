@@ -66,19 +66,21 @@ class segregation : public AsymmCell<segregationState, double> {
 		int totalNeighbors = 0;
 
 		if (state.isValuableLocation) {
-			totalNeighbors++; //  cell counts again (valuable location adds +1 to the total count (negates 1 different neighbor)
+			similarNeighbors++; //  cell counts again (valuable location adds +1 to the total count (negates 1 different neighbor)
 		}
+
 
 		// Count the number of different-type neighbors
 		for (const auto& [neighborId, neighborData] : neighborhood) {
 			double neighborValue = neighborData.state->value;
 			if (neighborValue != 0.0) { // Ignore empty cells
 				totalNeighbors++;
-				if (state.value != neighborValue){
+				if (state.value == neighborValue){
 					similarNeighbors++;
 				}
 			}
 		}
+
 		if (totalNeighbors == 0) {
 			return true; // empty neighborhood. cell wants friends.
 		} else if ((double)similarNeighbors/totalNeighbors >= ratio) {
