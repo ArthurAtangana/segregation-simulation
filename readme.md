@@ -9,21 +9,21 @@
 This model of segregation exists in two parts: the basic grid Cell-DEVS model, an initial first step into the modeling of internal segregation, and a second exploration using Asymmetric Cell-DEVS modeling to add complexity in our model. The two are separated in their respective directory.
 
 ### Running the model
-- To run the grid Cell-DEVS:
-    - run the run_experiments.sh script
-    - To run a single experiment or custom configuration:
-```bash
-./cell-devs/bin/segregation -c path_to_config.json -t simulation_time_number -o path_to_output.csv
-# example:
-./cell-devs/bin/segregation -c config/cell-devs/experiment_1_config.json -s 500 -o logs/cell-devs/experiment_1_log.csv
-```
 - To run the asymmetric Cell-DEVS:
     - run the run_asymmetric.sh script
     - To run a single experiment or custom configuration:
 ```bash
 ./asymmetric-cell-devs/bin/segregation -c path_to_config.json -t simulation_time_number -o path_to_output.csv
 # example:
-./asymmetric-cell-devs/bin/segregation -c config/asymmetric-cell-devs/experiment_1_config.json -s 500 -o logs/asymmetric-cell-devs/experiment_1_log.csv
+./asymmetric-cell-devs/bin/segregation -c config/asymmetric-cell-devs/experiment_1_config.json -t 500 -o logs/asymmetric-cell-devs/experiment_1_log.csv
+```
+- To run the grid Cell-DEVS:
+    - run the run_experiments.sh script
+    - To run a single experiment or custom configuration:
+```bash
+./cell-devs/bin/segregation -c path_to_config.json -t simulation_time_number -o path_to_output.csv
+# example:
+./cell-devs/bin/segregation -c config/cell-devs/experiment_1_config.json -t 500 -o logs/cell-devs/experiment_1_log.csv
 ```
 
 ### Project Structure:
@@ -38,7 +38,6 @@ This model of segregation exists in two parts: the basic grid Cell-DEVS model, a
 │       │   ├── segregationCell.hpp
 │       │   └── segregationState.hpp
 │       └── main.cpp
-├── build
 ├── cell-devs
 │   ├── build_sim.sh
 │   ├── CMakeLists.txt
@@ -56,7 +55,6 @@ This model of segregation exists in two parts: the basic grid Cell-DEVS model, a
 │   │   ├── experiment_3_config.json
 │   │   ├── experiment_4_config.json
 │   │   ├── experiment_5_config.json
-│   │   ├── experiment_6_config.json
 │   │   ├── ratio_10_config.json
 │   │   ├── ratio_25_config.json
 │   │   └── ratio_50_config.json
